@@ -1,0 +1,16 @@
+@import url(./variables.scss);
+@import url(./text.scss);
+@import url(./buttons.scss);
+@import url(./elements.scss);
+*::after,
+*::before,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+}
+body{
+    background-color: var(--very-light-gray);
+}

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="header">
+            <h2>Frontend Mentor</h2>
+            <p>Feedback Board</p>
+        </div>
+        <div class="filters">
+            <li (click)="filterByCategory('All'); onFilterClick(0)" [ngClass]="{'active': activeIndex === 0}">All</li>
+            <li *ngFor="let category of categories; let i=index" 
+            (click)="filterByCategory(category.toString()); onFilterClick(i+1);" 
+            [ngClass]="{'active': activeIndex === i+1}">{{ category }}</li>
+        </div>
+        <div class="roadmap">
+            <div class="roadmap-header">
+                <h3>Roadmap</h3>
+                <span>View</span>
+            </div>
+
+            <ul>
+                <li>
+                    <span class="circle circle"></span>
+                    <span>Planned</span>
+                    <span>{{planned.length}}</span>
+                </li>
+                <li>
+                    <span class="circle circle-2"></span>
+                    <span>In Progress</span>
+                    <span>{{inProgress.length}}</span>
+                </li>
+                <li>
+                    <span class="circle circle-3"></span>
+                    <span>Live</span>
+                    <span>{{live.length}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

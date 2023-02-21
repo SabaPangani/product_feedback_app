@@ -1,0 +1,10 @@
+.upvote{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: .4em .8em;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+}

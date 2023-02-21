@@ -1,0 +1,46 @@
+.container {
+    width: 100%;
+    max-width: 825px;
+    background-color: var(--dark-graysh-blue);
+    color: #FFFFFF;
+    margin: 100px auto 30px auto;
+    padding: .8em 2em;
+    border-radius: 13px;
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+
+        .suggestions {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+        }
+
+        .sort {
+            flex: 1;
+            opacity: .8;
+
+            select {
+                background: none;
+                border: none;
+                color: #FFFFFF;
+                padding: .5em;
+                cursor: pointer;
+                option {
+                    color: var(--light-graysh-blue);
+                    border-bottom: 1px solid var(--light-graysh-blue);
+                    padding: 1em .5em;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .feed{
+            &:hover{
+                background-color: #C75AF6;
+            }
+        }
+    }
+}

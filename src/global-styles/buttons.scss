@@ -1,0 +1,40 @@
+button {
+    max-width: 158px;
+    height: 44px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    width: 100%;
+    cursor: pointer;
+}
+
+button.button-1 {
+    background-color: var(--purple);
+}
+
+button.button-2 {
+    background-color: var(--dark-blue);
+}
+
+button.button-3 {
+    background-color: var(--dark-graysh-blue);
+}
+
+button.button-4 {
+    background-color: var(--red);
+}
+
+button.go-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    background-color: var(--dark-graysh-blue);
+    height: 53px;
+    width: 100%;
+    max-width: 158px;
+}

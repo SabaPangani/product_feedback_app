@@ -1,0 +1,119 @@
+.container {
+    position: absolute;
+    left: 550px;
+    top: 100px;
+    width: 100%;
+    max-width: 255px;
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+            color: white;
+            padding: 1em;
+            width: 100%;
+            border-radius: 10px;
+            height: 137px;
+            p {
+                font-size: 15px;
+                opacity: .8;
+                font-weight: 500 !important;
+            }
+        }
+
+        .filters {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px 20px;
+            background-color: white;
+            padding: 1em;
+            border-radius: 10px;
+
+            li {
+                background-color: var(--light-gray);
+                padding: .5em 1em;
+                color: var(--dark-blue);
+                font-size: 13px;
+                border-radius: 10px;
+                text-transform: capitalize;
+                font-weight: 700;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #CFD7FF;
+                }
+            }
+
+            li.active {
+                color: white;
+                background-color: var(--dark-blue);
+            }
+        }
+
+        .roadmap {
+            padding: 1em;
+
+            .roadmap-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                h3 {
+                    color: var(--dark-graysh-blue);
+                }
+
+                span {
+                    color: var(--dark-blue);
+                    font-weight: 600;
+                    text-decoration: underline;
+                }
+            }
+
+            ul {
+                margin-top: 20px;
+                li {
+                    margin-top: 10px;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 15px;
+
+                    span {
+                        color: var(--light-graysh-blue);
+
+                        &:nth-child(2) {
+                            flex: 1;
+                        }
+
+                        &:last-child {
+                            font-weight: 700;
+                        }
+                    }
+
+                    .circle {
+                        display: inline-block;
+                        width: 8px;
+                        height: 8px;
+                        background-color: var(--orange);
+                        border-radius: 100%;
+                    }
+
+                    .circle-2 {
+                        background-color: var(--purple);
+                    }
+
+                    .circle-3 {
+                        background-color: var(--sky-blue);
+                    }
+                }
+            }
+        }
+    }
+}

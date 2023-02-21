@@ -1,0 +1,3 @@
+<app-suggestions (sortByWord)="sortFeedbacks($event)"></app-suggestions>
+<app-feedback-board (categoryName)="filterDataByCategory($event)"></app-feedback-board>
+<app-feedbacks [filteredData]="filteredData"></app-feedbacks>
