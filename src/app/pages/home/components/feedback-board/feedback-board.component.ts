@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Category } from 'src/app/data-model/category-model';
 import { FeedbackRequest } from 'src/app/data-model/feedback-model';
 import { __values } from 'tslib';
@@ -15,14 +15,17 @@ export class FeedbackBoardComponent implements OnInit {
   planned: FeedbackRequest[] = [];
   inProgress: FeedbackRequest[] = [];
   live: FeedbackRequest[] = [];
-
+  @Input() feedBacks:FeedbackRequest[] = [];
 
   constructor(private _status: StatusService) { }
 
   onFilterClick(index: number) {
     this.activeIndex = index;
   }
-
+  getUniqueCategories(): Category[] {
+    const categories = this.feedBacks.map((request:FeedbackRequest) => request.category);
+    return Array.from(new Set(categories));
+  }
   ngOnInit() {       
     this._status.plannedFilter.subscribe({
       next: filter => this.planned = filter

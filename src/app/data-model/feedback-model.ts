@@ -1,5 +1,6 @@
 import { Category } from './category-model';
 import { Comment } from './comment-model';
+import { User } from './user-model';
 
 export type FeedbackRequest = {
   id: number | string;
@@ -7,6 +8,6 @@ export type FeedbackRequest = {
   description: string;
   upvotes: number;
   status: string;
-  category: Category;
   comments: Comment[];
+  category: Category; 
 };

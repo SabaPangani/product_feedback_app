@@ -16,7 +16,6 @@
             flex-direction: column;
             background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
             color: white;
-            padding: 1em;
             width: 100%;
             border-radius: 10px;
             height: 137px;
@@ -34,7 +33,6 @@
             flex-wrap: wrap;
             gap: 20px 20px;
             background-color: white;
-            padding: 1em;
             border-radius: 10px;
 
             li {
@@ -59,7 +57,6 @@
         }
 
         .roadmap {
-            padding: 1em;
 
             .roadmap-header {
                 display: flex;
