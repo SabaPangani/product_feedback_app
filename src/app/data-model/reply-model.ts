@@ -5,5 +5,5 @@ export type Reply = {
   replytoId: string;
   content: string;
   user: User;
-  replyTo: string;
+  replyingTo: string;
 };

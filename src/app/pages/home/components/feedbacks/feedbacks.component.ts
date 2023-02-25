@@ -10,6 +10,7 @@ import { feedbacks } from 'src/app/shared/data/feedbacks';
 })
 export class FeedbacksComponent implements OnInit {
   @Input() filteredData: FeedbackRequest[] = [];
+  public feedBack!:FeedbackRequest;
   feedBackId:string = '';
   upvotedFeedback: any = {};
 

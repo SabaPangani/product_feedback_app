@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="header">
+            <h3>Add Comment</h3>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+            <div class="input-div">
+                <input type="text" placeholder="Type your comment here" [(ngModel)]="content" name="comment" required>
+            </div>
+
+            <div class="bottom">
+                <span>250 Characters left</span>
+                <button type="submit" class="button-1">Post Comment</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -9,6 +9,8 @@ import { SuggestionsComponent } from './pages/home/components/suggestions/sugges
 import { FeedbacksComponent } from './pages/home/components/feedbacks/feedbacks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './pages/details/details.component';
+import { AddCommentComponent } from './pages/details/components/add-comment/add-comment.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,12 +18,14 @@ import { DetailsComponent } from './pages/details/details.component';
     FeedbackBoardComponent,
     SuggestionsComponent,
     FeedbacksComponent,
-    DetailsComponent
+    DetailsComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

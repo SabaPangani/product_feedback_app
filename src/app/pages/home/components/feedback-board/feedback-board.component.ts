@@ -23,6 +23,9 @@ export class FeedbackBoardComponent implements OnInit {
     this.activeIndex = index;
   }
   getUniqueCategories(): Category[] {
+    if (!Array.isArray(this.feedBacks)) {
+      return [];
+    }
     const categories = this.feedBacks.map((request:FeedbackRequest) => request.category);
     return Array.from(new Set(categories));
   }

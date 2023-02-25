@@ -29,24 +29,46 @@
                 <span>{{feedBack.comments ? feedBack.comments.length : 0}}</span>
             </div>
         </div>
-        <div class="comments-section">
-            <div class="header">
-                <h3>4 Comments</h3>
-            </div>
-            <div class="comments-wrapper">
+        <section class="comments-section padding-x" *ngIf="feedBack.comments">
+            <div class="comments-section-wrapper">
+                <div class="header">
+                    <h3>4 Comments</h3>
+                </div>
                 <div class="comment" *ngFor="let comment of feedBack.comments">
-                    <div class="comment-header">
-                        <img src="{{comment.user.image}}" alt="">
 
-                        <div class="name">
-                            <h4>{{comment.user.firstName}}</h4>
-                            <h4>{{comment.user.lastName}}</h4>
-                            <h4>{{comment.user.userName}}</h4>
+                    <div class="comment-body">
+                        <img src="{{comment.user.image}}" alt="">
+                        <div class="comment-header">
+                            <div class="name">
+                                <h4>{{comment.user.name}}</h4>
+                                <h4>@{{comment.user.username}}</h4>
+                            </div>
+                            <span>Reply</span>
                         </div>
-                        <span>Reply</span>
+
+                        <p>{{comment.content}}</p>
                     </div>
+
+                    <section class="replies-section" *ngIf="comment.replies">
+                        <div class="replies" *ngFor="let reply of comment.replies">
+                            <div class="reply-body">
+                                <img src="{{reply.user.image}}" alt="">
+                                <div class="reply-header">
+                                    <div class="name">
+                                        <h4>{{reply.user.name}}</h4>
+                                        <h4>@{{reply.user.username}}</h4>
+                                    </div>
+                                    <span>Reply</span>
+                                </div>
+
+                                <p><span style="color:var(--purple); font-weight: 700;">@{{reply.replyingTo}}</span>
+                                    {{reply.content}}</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-        </div>
+        <app-add-comment [user]="user" (onCommentAdd)="addComment($event)"></app-add-comment>
+    </section>
     </div>
 </div>

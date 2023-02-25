@@ -1,6 +1,5 @@
 export type User = {
-  userName: string;
-  firstName: string;
-  lastName: string;
+  username: string;
+  name: string;
   image: Blob;
 };
