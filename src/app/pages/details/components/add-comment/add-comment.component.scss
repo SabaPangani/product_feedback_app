@@ -29,12 +29,15 @@
                 justify-content: space-between;
                 align-items: center;
                 span{
-                    color: var(--light-graysh-blue);
                     font-size: 15px;
                 }
     
                 button{
                     font-weight: 600;
+
+                    &:disabled{
+                        opacity: .6;
+                    }
                 }
             }
         }

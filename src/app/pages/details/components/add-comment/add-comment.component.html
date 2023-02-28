@@ -5,12 +5,12 @@
         </div>
         <form (ngSubmit)="onSubmit()">
             <div class="input-div">
-                <input type="text" placeholder="Type your comment here" [(ngModel)]="content" name="comment" required>
+                <input type="text" placeholder="Type your comment here" [(ngModel)]="commentContent" name="comment" required>
             </div>
 
             <div class="bottom">
-                <span>250 Characters left</span>
-                <button type="submit" class="button-1">Post Comment</button>
+                <span [ngStyle]="{'color':commentContent.length > chars ? 'red' : 'var(--light-graysh-blue)' }">{{commentContent.length <= chars ? chars - commentContent.length : 0}} Characters left</span>
+                <button [disabled]="!commentContent || commentContent.length > chars" type="submit" class="button-1">Post Comment</button>
             </div>
         </form>
     </div>

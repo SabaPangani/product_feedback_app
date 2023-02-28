@@ -1,0 +1,46 @@
+<div class="container padding-x">
+    <div class="wrapper">
+        <div class="plus">
+            <figure>
+                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.3425 16V10.1657H16.0295V5.86372H10.3425V0H5.74586V5.86372H0V10.1657H5.74586V16H10.3425Z"
+                        fill="white" />
+                </svg>
+            </figure>
+        </div>
+        <h1>
+            Create New Feedback
+        </h1>
+
+        <div class="form-group">
+            <form [formGroup]="createFeedbackForm" (ngSubmit)="onSubmit()">
+                <div class="create-title create">
+                    <h4>Feedback Title</h4>
+                    <label>Add a short, descriptive headline</label>
+                    <input type="text" formControlName="newTitle">
+                </div>
+                <div class="create-category create">
+                    <h4>Category</h4>
+                    <label>Choose a category for your feedback</label>
+                    <select formControlName="newCategory">
+                        <option [value]="categoryEnum.Feature">{{categoryEnum.Feature}}</option>
+                        <option [value]="categoryEnum.UI">{{categoryEnum.UI}}</option>
+                        <option [value]="categoryEnum.UX">{{categoryEnum.UX}}</option>
+                        <option [value]="categoryEnum.Enhancement">{{categoryEnum.Enhancement}}</option>
+                        <option [value]="categoryEnum.Bug">{{categoryEnum.Bug}}</option>
+                    </select>
+                </div>
+                <div class="create-detail create">
+                    <h4>Feedback Detail</h4>
+                    <label>Include any specific comments on what should be improved, added, etc.</label>
+                    <input type="text" formControlName="newDescription">
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="button-3">Cancel</button>
+                    <button type="submit" class="button-1" [disabled]="createFeedbackForm.invalid">Add Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

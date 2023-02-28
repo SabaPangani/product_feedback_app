@@ -15,7 +15,7 @@ export class FeedbackBoardComponent implements OnInit {
   planned: FeedbackRequest[] = [];
   inProgress: FeedbackRequest[] = [];
   live: FeedbackRequest[] = [];
-  @Input() feedBacks:FeedbackRequest[] = [];
+  @Input() feedBacks: FeedbackRequest[] = [];
 
   constructor(private _status: StatusService) { }
 
@@ -26,10 +26,11 @@ export class FeedbackBoardComponent implements OnInit {
     if (!Array.isArray(this.feedBacks)) {
       return [];
     }
-    const categories = this.feedBacks.map((request:FeedbackRequest) => request.category);
-    return Array.from(new Set(categories));
+    const categories = this.feedBacks.map((request: FeedbackRequest) => request.category);
+    const uniqueCategories = Array.from(new Set(categories)).filter((category) => category !== undefined);
+    return uniqueCategories;
   }
-  ngOnInit() {       
+  ngOnInit() {
     this._status.plannedFilter.subscribe({
       next: filter => this.planned = filter
     });

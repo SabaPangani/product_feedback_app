@@ -1,0 +1,38 @@
+.container {
+    margin-top: 10px;
+    .wrapper {
+        width: 100%;
+        form {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            .input-div {
+                width: 100%;
+
+                input {
+                    width: 95%;
+                    height: 80px;
+                    border-radius: 5px;
+                    background-color: var(--very-light-gray);
+                    border: 1px solid var(--dark-blue);;
+                    outline-color: var(--dark-blue);
+                    text-align: start;
+                    padding: 1em 2em 2em 2em;
+                    font-size: 15px;
+                    color: var(--dark-graysh-blue);
+                }
+            }
+
+            button {
+                width: 100%;
+                max-width: 117px;
+                font-weight: 600;
+
+                &:disabled{
+                    opacity: .6;
+                }
+            }
+
+        }
+    }
+}

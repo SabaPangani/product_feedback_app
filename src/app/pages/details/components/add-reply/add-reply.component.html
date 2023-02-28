@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="wrapper">
+        <form (ngSubmit)="onSubmit()">
+            <div class="input-div">
+                <input type="text" placeholder="Type your reply here" [(ngModel)]="replyContent" name="comment" required>
+            </div>
+
+            <button [disabled]="!replyContent" type="submit" class="button-1">Post Reply</button>
+        </form>
+    </div>
+</div>

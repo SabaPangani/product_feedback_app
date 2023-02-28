@@ -8,8 +8,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  data: FeedbackRequest[] = [];
-  filteredData: FeedbackRequest[] = [];
+  data!: FeedbackRequest[];
+  filteredData!: FeedbackRequest[];
   private dataSubscription!: Subscription;
 
   constructor(private _dataService: DataService) {}
@@ -60,6 +60,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   filterDataByCategory(cat: string): void {
     this.filteredData = (cat === "All")
       ? [...this.data]
-      : this.data.filter((item) => item.category.toString() === cat.toLowerCase());
+      : this.data.filter((item) => item.category && item.category.toString() === cat.toLowerCase());
   }
 }

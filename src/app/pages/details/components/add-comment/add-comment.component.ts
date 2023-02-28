@@ -10,7 +10,9 @@ import { Comment } from 'src/app/data-model/comment-model';
 export class AddCommentComponent /*implements OnInit*/ {
   @Output() onCommentAdd: EventEmitter<Comment> = new EventEmitter();
   @Input() user!: User;
-  content: string = "";
+  @Input() comment!:Comment[];
+  chars:number = 250;
+  commentContent: string = "";
 
   constructor() { }
 
@@ -19,20 +21,22 @@ export class AddCommentComponent /*implements OnInit*/ {
   // }
 
   onSubmit(): void {
-    if (!this.content) {
+    if (this.commentContent == '') {
       alert("Add comment");
     }
 
     const newComment: Comment = {
-      id: '',
-      requestId: '',
-      content: this.content,
+      id: 0,
+      requestId: 0,
+      content: this.commentContent,
       user: this.user,
       replies: [],
     };
 
-    this.onCommentAdd.emit(newComment);
+    if (this.commentContent != ''){
+      this.onCommentAdd.emit(newComment);
+    }
 
-    this.content = '';
+    this.commentContent = '';
   }
 }

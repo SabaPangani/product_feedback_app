@@ -10,7 +10,10 @@ import { FeedbacksComponent } from './pages/home/components/feedbacks/feedbacks.
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './pages/details/details.component';
 import { AddCommentComponent } from './pages/details/components/add-comment/add-comment.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddReplyComponent } from './pages/details/components/add-reply/add-reply.component';
+import { CreateFeedbackComponent } from './pages/create-feedback/create-feedback.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +22,18 @@ import { FormsModule } from '@angular/forms';
     SuggestionsComponent,
     FeedbacksComponent,
     DetailsComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    AddReplyComponent,
+    CreateFeedbackComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

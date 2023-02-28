@@ -1,5 +1,13 @@
 <div class="container" *ngIf="feedBack">
     <div class="wrapper">
+        <div class="go-back">
+            <figure>
+                <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 9L0 5L4 1" stroke="#4661E6" stroke-width="2" />
+                </svg>
+            </figure>
+            <span class="go-back2" [routerLink]="'/'">Go Back</span>
+        </div>
         <div class="feedback">
             <div class="upvote">
                 <figure>
@@ -34,7 +42,7 @@
                 <div class="header">
                     <h3>4 Comments</h3>
                 </div>
-                <div class="comment" *ngFor="let comment of feedBack.comments">
+                <div class="comment" *ngFor="let comment of feedBack.comments;let i = index">
 
                     <div class="comment-body">
                         <img src="{{comment.user.image}}" alt="">
@@ -43,14 +51,19 @@
                                 <h4>{{comment.user.name}}</h4>
                                 <h4>@{{comment.user.username}}</h4>
                             </div>
-                            <span>Reply</span>
+                            <span (click)="onReplyHandler(i, false)">Reply</span>
                         </div>
 
                         <p>{{comment.content}}</p>
+                        <div class="add-reply" *ngIf="replyClick && i === clickedCommentIndex && isReply == false">
+                            <app-add-reply (onReplyAdd)="addReply($event,comment,feedBack.id)" [comment]="comment"
+                                [user]="user" [replyClick]="replyClick">
+                            </app-add-reply>
+                        </div>
                     </div>
 
                     <section class="replies-section" *ngIf="comment.replies">
-                        <div class="replies" *ngFor="let reply of comment.replies">
+                        <div class="replies" *ngFor="let reply of comment.replies; let j = index">
                             <div class="reply-body">
                                 <img src="{{reply.user.image}}" alt="">
                                 <div class="reply-header">
@@ -58,17 +71,23 @@
                                         <h4>{{reply.user.name}}</h4>
                                         <h4>@{{reply.user.username}}</h4>
                                     </div>
-                                    <span>Reply</span>
+                                    <span (click)="onReplyHandler(j, true)">Reply</span>
                                 </div>
 
                                 <p><span style="color:var(--purple); font-weight: 700;">@{{reply.replyingTo}}</span>
                                     {{reply.content}}</p>
+                                <div class="add-reply" *ngIf="replyClick && j === clickedReplyIndex && isReply == true">
+                                    <app-add-reply (onReplyAdd)="addReply($event,comment,feedBack.id)" [reply]="reply"
+                                        [comment]="comment" [user]="user" [replyClick]="replyClick">
+                                    </app-add-reply>
+                                </div>
                             </div>
                         </div>
                     </section>
                 </div>
             </div>
-        <app-add-comment [user]="user" (onCommentAdd)="addComment($event)"></app-add-comment>
-    </section>
+            <app-add-comment [user]="user" (onCommentAdd)="addComment($event)"
+                [comment]="feedBack.comments"></app-add-comment>
+        </section>
     </div>
 </div>

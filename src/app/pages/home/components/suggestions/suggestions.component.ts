@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-
 @Component({
   selector: 'app-suggestions',
   templateUrl: './suggestions.component.html',
@@ -8,7 +7,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class SuggestionsComponent {
   @Output() sortByWord = new EventEmitter<string>();
 
-  assignSortStyle(value:string): void {
+  /**
+   *
+   */
+
+  assignSortStyle(value: string): void {
     this.sortByWord.emit(value);
   }
 }

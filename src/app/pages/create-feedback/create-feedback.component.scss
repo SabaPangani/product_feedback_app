@@ -1,0 +1,90 @@
+.container{
+    width: 100%;
+    max-width: 540px;
+    background-color: white;
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        row-gap: 23px;
+        color: var(--dark-graysh-blue);
+        label{
+            color: var(--light-graysh-blue);
+            font-size: 14px;
+        }
+        h4{
+            font-size: 15px;
+        }
+        h1{
+            margin-bottom: 20px;
+        }
+
+        .plus{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+            border-radius: 100%;
+            figure{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .create{
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            input[type=text]{
+                width: 100%;
+                height: 48px;
+                border-radius: 5px;
+                background-color: var(--very-light-gray);
+                border: none;
+                outline-color: var(--dark-blue);
+                text-align: start;
+                padding: 2em;
+                font-size: 15px;
+                color: var(--dark-graysh-blue);
+                margin: 10px 0;
+            }
+        }
+
+        .create-detail{
+            input{
+                height: 80px !important;
+            }
+        }
+        .create-category{
+            margin: 5px 0;
+            select{
+                width: 100%;
+                height: 48px;
+                border-radius: 5px;
+                background-color: var(--very-light-gray);
+                border: none;
+                outline-color: var(--dark-blue);
+                font-size: 15px;
+                color: var(--dark-graysh-blue);
+                margin: 10px 0;
+                padding-left: 1em;
+            }
+        }
+        .buttons{
+            margin-top: 10px;
+            display: flex;
+            justify-content: end;
+            column-gap: 30px;
+
+            .button-3{
+                max-width: 120px;
+            }
+            
+            .button-1:disabled{
+                opacity: .6;
+            }
+        }
+    }
+}
