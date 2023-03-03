@@ -8,3 +8,18 @@
     background-color: var(--light-gray);
     border-radius: 10px;
 }
+.comments {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    svg {
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        color: var(--dark-graysh-blue);
+        font-weight: 700;
+    }
+}

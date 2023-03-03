@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpContext, HttpHeaders, } from '@angular/common/http';
-import { BehaviorSubject, catchError, filter, map, mergeMap, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, filter, find, map, merge, mergeMap, Observable, tap, throwError } from 'rxjs';
 import { FeedbackRequest } from '../data-model/feedback-model';
 import { data } from '../data-model/data-model';
 import { Comment } from '../data-model/comment-model';
 import { Reply } from '../data-model/reply-model';
+import { delay } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,10 +22,22 @@ export class DataService {
   getData(): Observable<data> {
     return this._http.get<data>(this.apiUrl);
   }
-  addFeedback(feedback: FeedbackRequest): Observable<FeedbackRequest> {
+
+  getDataById(feedbackId: number): Observable<FeedbackRequest> {
+    return this.getData().pipe(
+      filter(request => request !== undefined),
+      map(data => data.productRequests.find((item: FeedbackRequest) => item.id == feedbackId) || {} as FeedbackRequest)
+    );
+  }
+
+  addFeedback(feedback: FeedbackRequest): Observable<FeedbackRequest[]> {
     const apiUrl = 'http://localhost:3000/productRequests';
 
-    return this._http.put<FeedbackRequest>(apiUrl, feedback, httpOptions).pipe(
+    return this._http.get<FeedbackRequest[]>(apiUrl).pipe(
+      mergeMap((feedbacks: FeedbackRequest[]) => {
+        feedbacks.push(feedback);
+        return this._http.put<FeedbackRequest[]>(apiUrl, feedbacks, httpOptions);
+      }),
       catchError((error: any) => {
         console.error(error);
         return throwError('An error occurred while adding the feedback.');
@@ -34,26 +47,14 @@ export class DataService {
       })
     );
   }
-  // addComment(comment: Comment, feedbackId: number): Observable<FeedbackRequest> {
-  //   const apiUrl = `http://localhost:3000/productRequests/${feedbackId}`;
-  //   return this._http.get<FeedbackRequest>(apiUrl).pipe(
-  //     mergeMap((feedback: FeedbackRequest) => {
-  //       feedback.comments.push(comment);
-  //       return this._http.put<FeedbackRequest>(apiUrl, feedback, httpOptions);
-  //     }),
-  //     catchError((error: any) => {
-  //       console.error(error);
-  //       return throwError('An error occurred while adding the comment.');
-  //     }),
-  //     tap(() => {
-  //       console.log('Add comment request completed.');
-  //     })
-  //   );
-  // }
 
-  addComment(comment: Comment,feedbackId:number): Observable<Comment> {
-    const apiUrl = 'http://localhost:3000/productRequests/' + feedbackId;
-    return this._http.post<Comment>(apiUrl, comment, httpOptions).pipe(
+  addComment(comment: Comment, feedbackId: number): Observable<FeedbackRequest> {
+    const apiUrl = `http://localhost:3000/productRequests/${feedbackId}`;
+    return this._http.get<FeedbackRequest>(apiUrl).pipe(
+      mergeMap((feedback: FeedbackRequest) => {
+        feedback.comments.push(comment);
+        return this._http.put<FeedbackRequest>(apiUrl, feedback, httpOptions);
+      }),
       catchError((error: any) => {
         console.error(error);
         return throwError('An error occurred while adding the comment.');
@@ -61,21 +62,19 @@ export class DataService {
       tap(() => {
         console.log('Add comment request completed.');
       })
-    );  
+    );
   }
 
-  addReply(reply: Reply, feedbackId: number | string, comment: Comment): Observable<Reply> {
+  addReply(reply: Reply, feedbackId: number, comment: Comment): Observable<FeedbackRequest> {
     const apiUrl = `http://localhost:3000/productRequests/${feedbackId}`;
-    return this._http.get<Comment>(apiUrl).pipe(
-      mergeMap((comment: Comment) => {
-        if (!comment.replies) {
-          comment.replies = [reply];
-        } else {
-          comment.replies.push(reply);
+    return this._http.get<FeedbackRequest>(apiUrl).pipe(
+      mergeMap((feedback: FeedbackRequest) => {
+        let commentToEdit = feedback.comments.find(commentToFind => commentToFind.id === comment.id);
+        if (!commentToEdit?.replies && commentToEdit !== undefined) {
+          commentToEdit.replies = [];
         }
-        return this._http.put<Comment>(apiUrl, comment, httpOptions).pipe(
-          map(() => reply)
-        );
+        commentToEdit?.replies.push(reply);
+        return this._http.put<FeedbackRequest>(apiUrl, feedback, httpOptions);
       }),
       catchError((error: any) => {
         console.error(error);
@@ -86,12 +85,4 @@ export class DataService {
       })
     );
   }
-
-  getDataById(feedbackId: number): Observable<FeedbackRequest> {
-    return this.getData().pipe(
-      filter(request => request !== undefined),
-      map(data => data.productRequests.find((item: FeedbackRequest) => item.id == feedbackId) || {} as FeedbackRequest)
-    );
-  }
-
 }

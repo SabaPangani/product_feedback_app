@@ -19,7 +19,7 @@ export class CreateFeedbackComponent implements OnInit {
   newDescription!: string;
   feedbacks!: FeedbackRequest[];
 
-  constructor(private _dataService: DataService) {}
+  constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
     this.createFeedbackForm = new FormGroup({
@@ -30,7 +30,7 @@ export class CreateFeedbackComponent implements OnInit {
     console.log(this.createFeedbackForm.controls);
     this._dataService.getData().subscribe((data: data) => {
       this.feedbacks = data.productRequests;
-    });  
+    });
   }
 
   onSubmit(): void {
@@ -49,7 +49,15 @@ export class CreateFeedbackComponent implements OnInit {
       category: this.newCategory,
     }
 
-    this._dataService.addFeedback(newFeedback).subscribe(newFeedback => (this.feedbacks.push(newFeedback)));
+    this._dataService.addFeedback(newFeedback).subscribe(
+      (response: FeedbackRequest[]) => {
+      
+        console.log('Feedback added successfully:', response);
+      },
+      (error: any) => {
+        console.error('Failed to add feedback:', error);
+      }
+    );
     this.newTitle = '';
     this.newCategory;
     this.newDescription = '';

@@ -21,6 +21,7 @@ export class DetailsComponent {
   clickedComment!: Comment;
   clickedCommentIndex!: number;
   clickedReplyIndex!: number;
+  newReply!:Reply;
   constructor(private _route: ActivatedRoute, private _dataService: DataService, private _currentUser: UserService) { }
 
   ngOnInit(): void {
@@ -45,36 +46,36 @@ export class DetailsComponent {
     })
   }
 
-  addComment(comment: Comment): void {
-    try{
-      this._dataService.addComment(comment,this.feedBack.id).subscribe(comment => (this.feedBack.comments.push(comment)));
-    }
-    catch(error){
-      console.error(error);
-    }
-    console.log(this.feedBack.comments)
-  }
-
-  // addComment(comment: Comment, feedbackId: number): void {
-  //   this._dataService.addComment(comment, feedbackId).subscribe(
-  //     (feedback: FeedbackRequest) => {
-  //       this.feedBack = feedback;
-  //     },
-  //     (error: any) => {
-  //       console.error(error);
-  //       // handle error here
-  //     }
-  //   );
+  // addComment(comment: Comment): void {
+  //   try{
+  //     this._dataService.addComment(comment,this.feedBack.id).subscribe(feedback => feedback.comments.push(comment));
+  //   }
+  //   catch(error){
+  //     console.error(error);
+  //   }
+  //   console.log(this.feedBack.comments)
   // }
-  addReply(newReply: Reply, comment: Comment,feedbackId: number | string): void {
+
+  addComment(comment: Comment, feedbackId: number): void {
+    this._dataService.addComment(comment, feedbackId).subscribe(
+      (feedback: FeedbackRequest) => {
+        this.feedBack = feedback;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+  addReply(newReply: Reply, comment: Comment,feedbackId: number): void {
     this.clickedComment = comment;
-    if (!comment.replies) {
-      comment.replies = [newReply];
-    } else {
-      this._dataService.addReply(newReply, feedbackId,comment).subscribe(reply => {
-        comment.replies.push(reply);
-      });
-    }
+    this._dataService.addReply(newReply,feedbackId,comment).subscribe(
+      (feedback: FeedbackRequest) => {
+        this.feedBack = feedback;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
     this.replyClick = false;
   }
   onReplyHandler(i: number, isReply: boolean) {

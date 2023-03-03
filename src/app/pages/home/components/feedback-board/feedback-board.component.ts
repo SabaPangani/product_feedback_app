@@ -9,13 +9,14 @@ import { StatusService } from 'src/app/services/status.service';
   styleUrls: ['./feedback-board.component.scss']
 })
 export class FeedbackBoardComponent implements OnInit {
-  activeIndex = 0;
-  categories: Category[] = [];
+  activeIndex: number = 0;
+  categories!: Category[];
   @Output() categoryName = new EventEmitter<string>();
-  planned: FeedbackRequest[] = [];
-  inProgress: FeedbackRequest[] = [];
-  live: FeedbackRequest[] = [];
-  @Input() feedBacks: FeedbackRequest[] = [];
+  planned!: FeedbackRequest[];
+  inProgress!: FeedbackRequest[];
+  live!: FeedbackRequest[];
+  @Input() feedBacks!: FeedbackRequest[];
+  @Input() uniqueData!: FeedbackRequest[];
 
   constructor(private _status: StatusService) { }
 
@@ -23,14 +24,12 @@ export class FeedbackBoardComponent implements OnInit {
     this.activeIndex = index;
   }
   getUniqueCategories(): Category[] {
-    if (!Array.isArray(this.feedBacks)) {
-      return [];
-    }
-    const categories = this.feedBacks.map((request: FeedbackRequest) => request.category);
-    const uniqueCategories = Array.from(new Set(categories)).filter((category) => category !== undefined);
-    return uniqueCategories;
+    const categories = this.uniqueData?.map((request: FeedbackRequest) => request.category).filter(Boolean);
+    return [...new Set(categories)];
   }
   ngOnInit() {
+    this._status.roadMapFeedBack();
+
     this._status.plannedFilter.subscribe({
       next: filter => this.planned = filter
     });
@@ -45,8 +44,4 @@ export class FeedbackBoardComponent implements OnInit {
     this.categoryName.emit(cat);
     console.log(cat)
   }
-
-  // filterShowAll(cat: string): void {
-  //   this.showAll.emit(cat);
-  // }
 }

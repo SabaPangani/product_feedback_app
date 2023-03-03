@@ -10,7 +10,7 @@ import { Comment } from 'src/app/data-model/comment-model';
 export class AddCommentComponent /*implements OnInit*/ {
   @Output() onCommentAdd: EventEmitter<Comment> = new EventEmitter();
   @Input() user!: User;
-  @Input() comment!:Comment[];
+  @Input() comments!:Comment[];
   chars:number = 250;
   commentContent: string = "";
 
@@ -26,7 +26,7 @@ export class AddCommentComponent /*implements OnInit*/ {
     }
 
     const newComment: Comment = {
-      id: 0,
+      id: this.comments.length,
       requestId: 0,
       content: this.commentContent,
       user: this.user,

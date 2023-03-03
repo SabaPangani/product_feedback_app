@@ -9,5 +9,12 @@ export type FeedbackRequest = {
   upvotes: number;
   status: string;
   comments: Comment[];
-  category: Category; 
+  category: Category;
+};
+
+export type FeedbackByStatus = {
+  status: string;
+  feedbacks: FeedbackRequest[];
+  count: number;
+  color: string;
 };

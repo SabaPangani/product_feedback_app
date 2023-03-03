@@ -29,7 +29,6 @@ export class AddReplyComponent {
       replyingTo = this.comment.user.username;      
     }
     const newReply: Reply = {
-      id: 0,
       commentId: this.comment.id,
       replytoId: this.comment.id,
       content: this.replyContent,

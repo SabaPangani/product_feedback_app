@@ -57,7 +57,8 @@
         }
 
         .roadmap {
-
+            background-color: white;
+            border-radius: 10px;
             .roadmap-header {
                 display: flex;
                 align-items: center;
@@ -71,6 +72,7 @@
                     color: var(--dark-blue);
                     font-weight: 600;
                     text-decoration: underline;
+                    cursor: pointer;
                 }
             }
 

@@ -13,6 +13,9 @@ import { AddCommentComponent } from './pages/details/components/add-comment/add-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddReplyComponent } from './pages/details/components/add-reply/add-reply.component';
 import { CreateFeedbackComponent } from './pages/create-feedback/create-feedback.component';
+import { RoadmapComponent } from './pages/roadmap/roadmap.component';
+import { RoadmapHeaderComponent } from './pages/roadmap/components/roadmap-header/roadmap-header.component';
+import { FeedbacksByStatusComponent } from './pages/roadmap/components/feedbacks-by-status/feedbacks-by-status.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { CreateFeedbackComponent } from './pages/create-feedback/create-feedback
     AddCommentComponent,
     AddReplyComponent,
     CreateFeedbackComponent,
+    RoadmapComponent,
+    RoadmapHeaderComponent,
+    FeedbacksByStatusComponent,
   ],
   imports: [
     BrowserModule,

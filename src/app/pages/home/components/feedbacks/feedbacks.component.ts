@@ -2,14 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FeedbackRequest } from 'src/app/data-model/feedback-model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import { feedbacks } from 'src/app/shared/data/feedbacks';
 @Component({
   selector: 'app-feedbacks',
   templateUrl: './feedbacks.component.html',
   styleUrls: ['./feedbacks.component.scss']
 })
 export class FeedbacksComponent implements OnInit {
-  @Input() filteredData: FeedbackRequest[] = [];
+  @Input() data: FeedbackRequest[] = [];
   public feedBack!:FeedbackRequest;
   feedBackId:string = '';
   upvotedFeedback: any = {};

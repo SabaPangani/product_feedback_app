@@ -86,8 +86,8 @@
                     </section>
                 </div>
             </div>
-            <app-add-comment [user]="user" (onCommentAdd)="addComment($event)"
-                [comment]="feedBack.comments"></app-add-comment>
+            <app-add-comment [user]="user" (onCommentAdd)="addComment($event,feedBack.id)"
+                [comments]="feedBack.comments"></app-add-comment>
         </section>
     </div>
 </div>

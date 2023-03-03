@@ -17,6 +17,9 @@
             padding: 1.2em 2em;
             border-radius: 13px;
 
+            &:last-child{
+                margin-bottom: 100px;
+            }
             .upvote {
                 cursor: pointer;
 
@@ -88,7 +91,7 @@
                 align-items: center;
                 column-gap: 10px;
 
-                figure {
+                svg {
                     display: flex;
                     align-items: center;
                 }

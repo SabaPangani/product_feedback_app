@@ -1,6 +1,6 @@
 <div class="container">
     <div class="wrapper">
-        <div class="feedback" *ngFor="let feedback of filteredData" [routerLink]="['/details', feedback.id]">
+        <div class="feedback" *ngFor="let feedback of data">
             <div class="upvote" (click)="onUpvoteClick(feedback)" [ngClass]="{'active': upvotedFeedback[feedback.id]}">
                 <figure>
                     <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +9,7 @@
                 </figure>
                 <span>{{feedback.upvotes}}</span>
             </div>
-            <div class="text-box">
+            <div class="text-box"  [routerLink]="['/details', feedback.id]">
                 <h3>{{feedback.title}}</h3>
                 <p>{{feedback.description}}</p>
                 <p class="semi-bold">
