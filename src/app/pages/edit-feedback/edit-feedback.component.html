@@ -46,11 +46,11 @@
                     <input type="text" formControlName="newDescription">
                 </div>
 
-                <div class="buttons">
-                    <button type="submit" class="button-4" (click)="deleteFeedback()">Delete</button>
+                <div class="buttons" >
+                    <button type="submit" class="button-4" [routerLink]="''" (click)="deleteFeedback()">Delete</button>
                     <div class="group">
-                        <button type="submit" class="button-3" [routerLink]="''">Cancel</button>
-                        <button type="submit" class="button-1" [disabled]="createFeedbackForm.invalid">Add
+                        <button type="submit" class="button-3" [routerLink]="['/details', feedback.id]">Cancel</button>
+                        <button type="submit" class="button-1" [disabled]="createFeedbackForm.invalid">Edit
                             Feedback</button>
                     </div>
                 </div>

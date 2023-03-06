@@ -29,31 +29,7 @@
             "image": "./assets/user-images/image-thomas.jpg",
             "name": "Thomas Hood",
             "username": "brawnybrave"
-          },
-          "replies": [
-            {
-              "commentId": 2,
-              "replytoId": 2,
-              "content": "asdaws",
-              "user": {
-                "image": "./assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround"
-              },
-              "replyingTo": "velvetround"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "requestId": 0,
-          "content": "wasdwasdwa",
-          "user": {
-            "image": "./assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround"
-          },
-          "replies": []
+          }
         }
       ]
     },
