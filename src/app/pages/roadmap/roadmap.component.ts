@@ -34,17 +34,16 @@ export class RoadmapComponent {
       live: '#62BCFA',
     };
 
-    for (const status of this.getStatuses()) {
+    for (const    status of this.getStatuses()) {
       const feedbacks = this.data.filter((feedback: FeedbackRequest) => feedback.status === status)
 
       feedbackByStatus.push({ status, feedbacks, count: feedbacks.length,color: statusColorMap[status] || 'gray' })
     }
-
     return feedbackByStatus;
   }
   ngOnDestroy() {
     if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
+      this.dataSubscription.unsubscribe()
     }
   }
 

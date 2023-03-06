@@ -14,7 +14,7 @@
                     </figure>
                     <span>{{feedback.status | titlecase}}</span>
                 </div>
-                <div class="text-box">
+                <div class="text-box" [routerLink]="['/details', feedback.id]">
                     <h3>{{feedback.title}}</h3>
                     <p>{{feedback.description}}</p>
                     <p class="semi-bold">

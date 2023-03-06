@@ -7,17 +7,13 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './feedbacks.component.html',
   styleUrls: ['./feedbacks.component.scss']
 })
-export class FeedbacksComponent implements OnInit {
+export class FeedbacksComponent {
   @Input() data: FeedbackRequest[] = [];
-  public feedBack!:FeedbackRequest;
-  feedBackId:string = '';
+  public feedBack!: FeedbackRequest;
+  feedBackId: string = '';
   upvotedFeedback: any = {};
 
-  constructor(private _route:ActivatedRoute, private _dataService:DataService){}
-
-  ngOnInit(): void {
-   
-  }
+  constructor(private _route: ActivatedRoute, private _dataService: DataService) { }
   onUpvoteClick(feedback: FeedbackRequest) {
     if (!this.upvotedFeedback[feedback.id]) {
       feedback.upvotes += 1;

@@ -65,6 +65,16 @@ export class DataService {
     );
   }
 
+  deleteFeedback(feedbackId:number): Observable<FeedbackRequest>{
+    const apiUrl = `http://localhost:3000/productRequests/${feedbackId}`;
+      return this._http.delete<FeedbackRequest>(apiUrl).pipe(
+        catchError((error: any) => {
+          console.error(error);
+          return throwError('An error occurred while deleting the feedback.');
+        })
+      );
+  }
+
   addReply(reply: Reply, feedbackId: number, comment: Comment): Observable<FeedbackRequest> {
     const apiUrl = `http://localhost:3000/productRequests/${feedbackId}`;
     return this._http.get<FeedbackRequest>(apiUrl).pipe(

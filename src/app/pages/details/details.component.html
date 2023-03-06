@@ -1,12 +1,18 @@
 <div class="container" *ngIf="feedBack">
     <div class="wrapper">
-        <div class="go-back">
-            <figure>
-                <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 9L0 5L4 1" stroke="#4661E6" stroke-width="2" />
-                </svg>
-            </figure>
-            <span class="go-back2" [routerLink]="'/'">Go Back</span>
+        <div class="header">
+            <div class="go-back">
+                <figure>
+                    <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 9L0 5L4 1" stroke="#4661E6" stroke-width="2" />
+                    </svg>
+                </figure>
+                <span class="go-back2" [routerLink]="'/'">Go Back</span>
+            </div>
+
+            <div class="edit-feedback">
+                <button class="button-2" [routerLink]="['/edit-feedback', feedBack.id]">Edit Feedback</button>
+            </div>
         </div>
         <div class="feedback">
             <div class="upvote">
@@ -86,8 +92,8 @@
                     </section>
                 </div>
             </div>
-            <app-add-comment [user]="user" (onCommentAdd)="addComment($event,feedBack.id)"
-                [comments]="feedBack.comments"></app-add-comment>
         </section>
+        <app-add-comment [user]="user" (onCommentAdd)="addComment($event,feedBack.id)"
+        [comments]="feedBack.comments"></app-add-comment>
     </div>
 </div>

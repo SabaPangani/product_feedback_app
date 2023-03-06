@@ -16,6 +16,7 @@ import { CreateFeedbackComponent } from './pages/create-feedback/create-feedback
 import { RoadmapComponent } from './pages/roadmap/roadmap.component';
 import { RoadmapHeaderComponent } from './pages/roadmap/components/roadmap-header/roadmap-header.component';
 import { FeedbacksByStatusComponent } from './pages/roadmap/components/feedbacks-by-status/feedbacks-by-status.component';
+import { EditFeedbackComponent } from './pages/edit-feedback/edit-feedback.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FeedbacksByStatusComponent } from './pages/roadmap/components/feedbacks
     RoadmapComponent,
     RoadmapHeaderComponent,
     FeedbacksByStatusComponent,
+    EditFeedbackComponent,
   ],
   imports: [
     BrowserModule,

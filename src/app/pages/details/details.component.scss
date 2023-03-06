@@ -2,23 +2,34 @@
     margin: 50px auto 0 auto;
     width: 100%;
     max-width: 730px;
-    background-color: #FFFFFF;
     border-radius: 13px;
 
     .wrapper {
-        .go-back{
-            padding: 1em;
-            margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        .header {
             display: flex;
-            flex-direction: row;
+            justify-content: space-between;
             align-items: center;
-            column-gap: 10px;
-            cursor: pointer;
+            .go-back {
+                padding: 1em;
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                column-gap: 10px;
+                cursor: pointer;
 
-            span{
-                color: var(--light-graysh-blue);
-                font-size: 14px;
-                font-weight: 700;
+                span {
+                    color: var(--light-graysh-blue);
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+            }
+
+            .button-2{
+                padding: 0 1.8em;
             }
         }
 
@@ -26,10 +37,10 @@
             width: 100%;
             display: flex;
             align-items: center;
-            background-color: white;
             column-gap: 40px;
             padding: 1.2em 2em;
             border-radius: 13px;
+            background-color: #FFFFFF;
 
             .upvote {
                 cursor: pointer;
@@ -115,9 +126,13 @@
         }
 
         .comments-section {
+            background-color: #FFFFFF;
+            border-radius: 13px;
+
             h3 {
                 color: var(--dark-graysh-blue);
             }
+
             display: flex;
             flex-direction: column;
             row-gap: 30px;
@@ -138,6 +153,7 @@
                         padding-bottom: 10px;
                         border-bottom: 1px solid #8c92b33e;
                     }
+
                     img {
                         width: 40px;
                         height: 40px;
@@ -146,6 +162,7 @@
                         justify-self: end;
                         margin-right: 20px;
                     }
+
                     .comment-body,
                     .reply-body {
                         display: grid;
@@ -195,12 +212,15 @@
                             grid-area: text;
                             height: fit-content;
                         }
-                        .add-reply{
+
+                        .add-reply {
                             grid-area: reply;
                         }
                     }
 
                     .replies-section {
+                        background-color: #FFFFFF;
+                        border-radius: 13px;
                         grid-column: 1/-1;
                         justify-self: start;
                         margin-top: 25px;
