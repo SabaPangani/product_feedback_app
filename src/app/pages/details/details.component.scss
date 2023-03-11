@@ -12,39 +12,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .go-back {
-                padding: 1em;
-                margin-bottom: 15px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                column-gap: 10px;
-                cursor: pointer;
-
-                span {
-                    color: var(--light-graysh-blue);
-                    font-size: 14px;
-                    font-weight: 700;
-                }
-            }
+            padding: 1.2em 2em;
 
             .button-2{
-                padding: 0 1.8em;
+                max-width: 155px;
+                padding: 0 1.2em;
             }
         }
 
         .feedback {
             width: 100%;
-            display: flex;
+            display: grid;
             align-items: center;
+            row-gap: 20px;
             column-gap: 40px;
+            grid-template-columns: .2fr 1fr .2fr;
             padding: 1.2em 2em;
             border-radius: 13px;
             background-color: #FFFFFF;
 
             .upvote {
                 cursor: pointer;
+                grid-column: 1/1;
 
+                @media only screen and (max-width:432px) {
+                    grid-column: 1/2;
+                    grid-row: 2/2;
+                    flex-direction: row;
+                    column-gap: 10px;
+
+                    figure{
+                        display: flex;
+                        align-items: center;
+                    }
+                }
                 span {
                     color: var(--dark-graysh-blue);
                     font-weight: 700;
@@ -62,7 +63,6 @@
 
             .upvote.active {
                 background-color: var(--dark-blue);
-
                 span {
                     color: white;
                 }
@@ -75,12 +75,14 @@
             }
 
             .text-box {
-                flex: 2;
                 display: flex;
                 flex-direction: column;
+                grid-column: 2/2;
                 row-gap: 8px;
                 cursor: pointer;
-
+                @media only screen and (max-width:432px) {
+                    grid-column: 1/-1;
+                }
                 &:hover {
                     h3 {
                         color: var(--dark-blue) !important;
@@ -109,6 +111,7 @@
             }
 
             .comments {
+                grid-column: 3/3;
                 display: flex;
                 align-items: center;
                 column-gap: 10px;
@@ -138,11 +141,13 @@
             row-gap: 30px;
 
             .comments-section-wrapper {
-                margin-top: 40px;
                 display: flex;
                 flex-direction: column;
                 row-gap: 30px;
 
+                .header{
+                    padding: 0;
+                }
 
                 .comment {
                     display: flex;

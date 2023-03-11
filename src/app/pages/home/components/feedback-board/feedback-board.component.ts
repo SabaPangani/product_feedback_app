@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, HostListener } from '@angular/core';
 import { Category } from 'src/app/data-model/category-model';
 import { FeedbackRequest } from 'src/app/data-model/feedback-model';
 import { __values } from 'tslib';
 import { StatusService } from 'src/app/services/status.service';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 @Component({
   selector: 'app-feedback-board',
   templateUrl: './feedback-board.component.html',
@@ -17,14 +18,27 @@ export class FeedbackBoardComponent implements OnInit {
   live!: FeedbackRequest[];
   @Input() feedBacks!: FeedbackRequest[];
   @Input() uniqueData!: FeedbackRequest[];
+  
+  openNav: boolean = false;
 
-  constructor(private _status: StatusService) { }
+  constructor(private _status: StatusService,private breakpointObserver: BreakpointObserver) { }
+
+  toggleNav(){
+    this.openNav = !this.openNav
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (event.target.innerWidth <= 586) {
+      this.openNav = false;
+    }
+  }
 
   onFilterClick(index: number) {
     this.activeIndex = index;
   }
   getUniqueCategories(): Category[] {
-    const categories = this.uniqueData?.map((request: FeedbackRequest) => request.category).filter(Boolean);
+    const categories = this.uniqueData?.map((request: FeedbackRequest) => request.category);
     return [...new Set(categories)];
   }
   ngOnInit() {
@@ -38,6 +52,14 @@ export class FeedbackBoardComponent implements OnInit {
     });
     this._status.liveFilter.subscribe({
       next: filter => this.live = filter
+    });
+
+    this.breakpointObserver
+    .observe(['(min-width: 586px)'])
+    .subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        this.openNav = false;
+      }
     });
   }
   filterByCategory(cat: string): void {

@@ -30,16 +30,16 @@
             .bottom {
                 margin-top: 15px;
                 display: flex;
+                column-gap: 20px;
                 justify-content: space-between;
                 align-items: center;
-
+                
                 span {
                     font-size: 15px;
                 }
 
                 button {
                     font-weight: 600;
-
                     &:disabled {
                         opacity: .6;
                     }

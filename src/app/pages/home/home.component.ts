@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.dataSubscription = this._dataService.getData().subscribe((data) => {
       this.data = data.productRequests;
-      this.uniqueData = data.productRequests;
+      this.uniqueData = this.data;
     });
   }
 

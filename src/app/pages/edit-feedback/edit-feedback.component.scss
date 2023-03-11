@@ -1,25 +1,31 @@
-.container{
+.container {
     width: 100%;
     max-width: 540px;
     background-color: white;
     margin: 100px auto;
-    .wrapper{
+    @media only screen and (max-width:582px) {
+        margin: 20px auto;
+    }
+    .wrapper {
         display: flex;
         flex-direction: column;
         row-gap: 23px;
         color: var(--dark-graysh-blue);
-        label{
+
+        label {
             color: var(--light-graysh-blue);
             font-size: 14px;
         }
-        h4{
+
+        h4 {
             font-size: 15px;
         }
-        h1{
+
+        h1 {
             margin-bottom: 20px;
         }
 
-        .plus{
+        .plus {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -27,18 +33,20 @@
             height: 56px;
             background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
             border-radius: 100%;
-            figure{
+
+            figure {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
         }
 
-        .create{
+        .create {
             display: flex;
             flex-direction: column;
             row-gap: 5px;
-            input[type=text]{
+
+            input[type=text] {
                 width: 100%;
                 height: 48px;
                 border-radius: 5px;
@@ -53,14 +61,17 @@
             }
         }
 
-        .create-detail{
-            input{
+        .create-detail {
+            input {
                 height: 80px !important;
             }
         }
-        .create-category,.create-status{
+
+        .create-category,
+        .create-status {
             margin: 5px 0;
-            select{
+
+            select {
                 width: 100%;
                 height: 48px;
                 border-radius: 5px;
@@ -73,30 +84,53 @@
                 padding-left: 1em;
             }
         }
-        .buttons{
+
+        .buttons {
             margin-top: 17px;
             display: flex;
             justify-content: space-between;
+            row-gap: 15px;
             column-gap: 30px;
 
-            
-
-            .button-4{
-                width: 133px;
+            @media only screen and (max-width:432px) {
+                flex-direction: column-reverse;
             }
-            
-            
-            .group{
+
+            .button-4 {
+                max-width: 133px;
+
+                @media only screen and (max-width:432px) {
+                    max-width: 100%;
+                }
+            }
+
+
+            .group {
                 display: flex;
                 justify-content: end;
+                row-gap: 15px;
                 column-gap: 30px;
                 width: 100%;
-                .button-1:disabled{
+
+                @media only screen and (max-width:432px) {
+                    flex-direction: column-reverse;
+                }
+                
+                .button-1:disabled {
                     opacity: .6;
                 }
 
-                .button-3{
+                .button-1{
+                    @media only screen and (max-width:432px) {
+                        max-width: 100%;
+                    }
+                }
+                .button-3 {
                     max-width: 120px;
+
+                    @media only screen and (max-width:432px) {
+                        max-width: 100%;
+                    }
                 }
             }
         }

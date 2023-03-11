@@ -5,7 +5,6 @@ import { FeedbackRequest } from '../data-model/feedback-model';
 import { data } from '../data-model/data-model';
 import { Comment } from '../data-model/comment-model';
 import { Reply } from '../data-model/reply-model';
-import { delay } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({

@@ -1,3 +1,13 @@
-<app-suggestions (sortByWord)="sortFeedbacks($event)"></app-suggestions>
-<app-feedback-board (categoryName)="filterDataByCategory($event)" [feedBacks]="data" [uniqueData]="uniqueData"></app-feedback-board>
-<app-feedbacks [data]="data"></app-feedbacks>
+<div class="parent-div">
+    <div class="suggestions">
+    <app-suggestions (sortByWord)="sortFeedbacks($event)"></app-suggestions>
+
+    </div>
+    <div class="board">
+        <app-feedback-board (categoryName)="filterDataByCategory($event)" [feedBacks]="data"
+        [uniqueData]="uniqueData"></app-feedback-board>
+    </div>
+    <div class="feedbacks">
+        <app-feedbacks [data]="data"></app-feedbacks>
+    </div>
+</div>

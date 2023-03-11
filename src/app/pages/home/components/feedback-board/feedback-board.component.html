@@ -1,15 +1,74 @@
-<div class="container">
-    <div class="wrapper">
-        <div class="header padding-m">
-            <h2>Frontend Mentor</h2>
-            <p>Feedback Board</p>
+<aside>
+    <div class="container">
+        <div class="wrapper">
+            <div class="header padding-m">
+                <div class="text-box">
+                    <h2>Frontend Mentor</h2>
+                    <p>Feedback Board</p>
+                </div>
+
+                <figure (click)="toggleNav()" *ngIf="!openNav">
+                    <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Group 3">
+                            <rect id="Rectangle" width="20" height="3" fill="white" />
+                            <rect id="Rectangle Copy" y="7" width="20" height="3" fill="white" />
+                            <rect id="Rectangle Copy 2" y="14" width="20" height="3" fill="white" />
+                        </g>
+                    </svg>
+
+                </figure>
+                <figure (click)="toggleNav()" *ngIf="openNav">
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99989 6.37857L2.98948 0.368164L0.868164 2.48948L6.87857 8.49989L0.868164 14.5103L2.98948 16.6316L8.99989 10.6212L15.0103 16.6316L17.1316 14.5103L11.1212 8.49989L17.1316 2.48948L15.0103 0.368164L8.99989 6.37857Z" fill="white"/>
+                    </svg>                        
+                </figure>
+            </div>
+            <div class="filters padding-m">
+                <li (click)="filterByCategory('All'); onFilterClick(0)" [ngClass]="{'active': activeIndex === 0}">All
+                </li>
+                <li *ngFor="let category of getUniqueCategories(); let i=index"
+                    (click)="filterByCategory(category.toString()); onFilterClick(i+1);"
+                    [ngClass]="{'active': activeIndex === i+1}">{{ category }}</li>
+            </div>
+            <div class="roadmap padding-m">
+                <div class="roadmap-header">
+                    <h3>Roadmap</h3>
+                    <span [routerLink]="'/roadmap'">View</span>
+                </div>
+
+                <ul>
+                    <li>
+                        <span class="circle circle"></span>
+                        <span>Planned</span>
+                        <span>{{planned.length}}</span>
+                    </li>
+                    <li>
+                        <span class="circle circle-2"></span>
+                        <span>In Progress</span>
+                        <span>{{inProgress.length}}</span>
+                    </li>
+                    <li>
+                        <span class="circle circle-3"></span>
+                        <span>Live</span>
+                        <span>{{live.length}}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </div>
+</aside>
+<div class="bg" [ngClass]="{'active': openNav}" *ngIf="openNav"></div>
+
+<div class="mobile-board" [ngClass]="{'active': openNav}" *ngIf="openNav">
+    <div class="container">
         <div class="filters padding-m">
-            <li (click)="filterByCategory('All'); onFilterClick(0)" [ngClass]="{'active': activeIndex === 0}">All</li>
-            <li *ngFor="let category of getUniqueCategories(); let i=index" 
-            (click)="filterByCategory(category.toString()); onFilterClick(i+1);" 
-            [ngClass]="{'active': activeIndex === i+1}">{{ category }}</li>
+            <li (click)="filterByCategory('All'); onFilterClick(0)" [ngClass]="{'active': activeIndex === 0}">All
+            </li>
+            <li *ngFor="let category of getUniqueCategories(); let i=index"
+                (click)="filterByCategory(category.toString()); onFilterClick(i+1);"
+                [ngClass]="{'active': activeIndex === i+1}">{{ category }}</li>
         </div>
+
         <div class="roadmap padding-m">
             <div class="roadmap-header">
                 <h3>Roadmap</h3>

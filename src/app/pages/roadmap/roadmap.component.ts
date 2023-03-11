@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { FeedbackRequest } from 'src/app/data-model/feedback-model';
 import { DataService } from 'src/app/services/data.service';
 import { FeedbackByStatus } from 'src/app/data-model/feedback-model';
 @Component({
   selector: 'app-roadmap',
   templateUrl: './roadmap.component.html',
-  styleUrls: ['./roadmap.component.scss']
+  styleUrls: ['./roadmap.component.scss'],
 })
-
 export class RoadmapComponent {
   data!: FeedbackRequest[];
   private dataSubscription!: Subscription;
 
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService) {}
 
   ngOnInit() {
     this.dataSubscription = this._dataService.getData().subscribe((data) => {
@@ -21,8 +20,9 @@ export class RoadmapComponent {
     });
   }
   getStatuses(): string[] {
-    const statuses = [...new Set(this.data?.map((request: FeedbackRequest) => request.status))].splice(1, 3);
-    console.log(statuses)
+    const statuses = [
+      ...new Set(this.data?.map((request: FeedbackRequest) => request.status)),
+    ].splice(1, 3);
     return statuses;
   }
   modifyDataByStatus(): FeedbackByStatus[] {
@@ -34,17 +34,22 @@ export class RoadmapComponent {
       live: '#62BCFA',
     };
 
-    for (const    status of this.getStatuses()) {
-      const feedbacks = this.data.filter((feedback: FeedbackRequest) => feedback.status === status)
+    for (const status of this.getStatuses()) {
+      const feedbacks = this.data.filter(
+        (feedback: FeedbackRequest) => feedback.status === status);
 
-      feedbackByStatus.push({ status, feedbacks, count: feedbacks.length,color: statusColorMap[status] || 'gray' })
+      feedbackByStatus.push({
+        status,
+        feedbacks,
+        count: feedbacks.length,
+        color: statusColorMap[status] || 'gray',
+      });
     }
     return feedbackByStatus;
   }
   ngOnDestroy() {
     if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe()
+      this.dataSubscription.unsubscribe();
     }
   }
-
 }

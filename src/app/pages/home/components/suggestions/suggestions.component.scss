@@ -1,26 +1,59 @@
 .container {
     width: 100%;
     max-width: 825px;
-    background-color: var(--dark-graysh-blue);
     color: #FFFFFF;
     margin: 100px auto 30px auto;
-    padding: .8em 2em;
-    border-radius: 13px;
+
+    @media only screen and (max-width:904px) {
+        margin-top: 30px;
+        padding: 0 2em;
+    }
+
+    @media only screen and (max-width:586px) {
+        margin-top: 0;
+        padding: 0;
+        border-radius: 0;
+    }
 
     .wrapper {
         display: flex;
         align-items: center;
         column-gap: 30px;
+        background-color: var(--dark-graysh-blue);
+        border-radius: 13px;
+        padding: .8em 1em;
+
+        @media only screen and (max-width:586px) {
+            border-radius: 0;
+        }
+
+        // @media only screen and (max-width:418px) {
+        //     padding: .8em 1em;
+        // }
 
         .suggestions {
             display: flex;
             align-items: center;
             column-gap: 10px;
+
+            @media only screen and (max-width:582px) {
+                display: none;
+            }
         }
 
         .sort {
             flex: 1;
             opacity: .8;
+
+            @media only screen and (max-width:582px) {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            label {
+                width: fit-content;
+            }
 
             select {
                 background: none;
@@ -28,6 +61,7 @@
                 color: #FFFFFF;
                 padding: .5em;
                 cursor: pointer;
+
                 option {
                     color: var(--light-graysh-blue);
                     border-bottom: 1px solid var(--light-graysh-blue);
@@ -37,8 +71,13 @@
                 }
             }
         }
-        .feed{
-            &:hover{
+
+        .feed {
+            @media only screen and (max-width:582px) {
+                font-size: 12px;
+            }
+
+            &:hover {
                 background-color: #C75AF6;
             }
         }

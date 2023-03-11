@@ -2,7 +2,11 @@
     width: 100%;
     max-width: 825px;
     margin: auto;
+    position: relative;
 
+    @media only screen and (max-width:904px) {
+        padding: 0 2em;
+    }
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -10,19 +14,30 @@
 
         .feedback {
             width: 100%;
-            display: flex;
+            display: grid;
             align-items: center;
-            background-color: white;
+            row-gap: 20px;
             column-gap: 40px;
+            grid-template-columns: .1fr 1fr .1fr;
             padding: 1.2em 2em;
             border-radius: 13px;
+            background-color: #FFFFFF;
 
-            &:last-child{
-                margin-bottom: 100px;
-            }
             .upvote {
                 cursor: pointer;
+                grid-column: 1/1;
 
+                @media only screen and (max-width:432px) {
+                    grid-column: 1/2;
+                    grid-row: 2/2;
+                    flex-direction: row;
+                    column-gap: 10px;
+
+                    figure{
+                        display: flex;
+                        align-items: center;
+                    }
+                }
                 span {
                     color: var(--dark-graysh-blue);
                     font-weight: 700;
@@ -40,7 +55,6 @@
 
             .upvote.active {
                 background-color: var(--dark-blue);
-
                 span {
                     color: white;
                 }
@@ -53,12 +67,14 @@
             }
 
             .text-box {
-                flex: 2;
                 display: flex;
                 flex-direction: column;
+                grid-column: 2/2;
                 row-gap: 8px;
                 cursor: pointer;
-
+                @media only screen and (max-width:432px) {
+                    grid-column: 1/-1;
+                }
                 &:hover {
                     h3 {
                         color: var(--dark-blue) !important;
@@ -87,11 +103,12 @@
             }
 
             .comments {
+                grid-column: 3/3;
                 display: flex;
                 align-items: center;
                 column-gap: 10px;
 
-                svg {
+                figure {
                     display: flex;
                     align-items: center;
                 }

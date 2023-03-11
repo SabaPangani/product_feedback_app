@@ -1,4 +1,13 @@
 <div class="container padding-x">
+    <div class="go-back">
+        <figure>
+            <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 9L0 5L4 1" stroke="#4661E6" stroke-width="2" />
+            </svg>
+        </figure>
+        <span class="go-back2" [routerLink]="['/details', feedback.id]">Go Back</span>
+    </div>
+
     <div class="wrapper">
         <div class="plus">
             <figure>
@@ -10,7 +19,7 @@
             </figure>
         </div>
         <h1>
-            Create New Feedback
+            Editing '{{feedback.title}}'
         </h1>
 
         <div class="form-group">
@@ -50,8 +59,7 @@
                     <button type="submit" class="button-4" [routerLink]="''" (click)="deleteFeedback()">Delete</button>
                     <div class="group">
                         <button type="submit" class="button-3" [routerLink]="['/details', feedback.id]">Cancel</button>
-                        <button type="submit" class="button-1" [disabled]="createFeedbackForm.invalid">Edit
-                            Feedback</button>
+                        <button type="submit" class="button-1" [disabled]="createFeedbackForm.invalid">Save Changes</button>
                     </div>
                 </div>
             </form>

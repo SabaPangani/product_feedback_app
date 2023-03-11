@@ -17,7 +17,7 @@ import { RoadmapComponent } from './pages/roadmap/roadmap.component';
 import { RoadmapHeaderComponent } from './pages/roadmap/components/roadmap-header/roadmap-header.component';
 import { FeedbacksByStatusComponent } from './pages/roadmap/components/feedbacks-by-status/feedbacks-by-status.component';
 import { EditFeedbackComponent } from './pages/edit-feedback/edit-feedback.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +40,7 @@ import { EditFeedbackComponent } from './pages/edit-feedback/edit-feedback.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
 
   bootstrap: [AppComponent]
