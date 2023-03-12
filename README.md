@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
 
-To use and test website fully clone repository and temporarily host json-server.
+## To use and test website fully clone repository and temporarily host json-server.
 
 ## Development server
 
