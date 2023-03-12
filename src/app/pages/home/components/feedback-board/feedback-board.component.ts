@@ -4,10 +4,32 @@ import { FeedbackRequest } from 'src/app/data-model/feedback-model';
 import { __values } from 'tslib';
 import { StatusService } from 'src/app/services/status.service';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 @Component({
   selector: 'app-feedback-board',
   templateUrl: './feedback-board.component.html',
-  styleUrls: ['./feedback-board.component.scss']
+  styleUrls: ['./feedback-board.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('.3s ease-in-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('.3s ease-in-out', style({ opacity: 0 }))
+      ])
+    ]),
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('.3s ease-in-out', style({ transform: 'translateX(0%)' }))
+      ]),
+      transition(':leave', [
+        animate('.3s ease-in-out', style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ]
 })
 export class FeedbackBoardComponent implements OnInit {
   activeIndex: number = 0;

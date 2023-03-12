@@ -6,6 +6,7 @@ import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/
 import { DataService } from 'src/app/services/data.service';
 import { Observable } from 'rxjs';
 import { data } from 'src/app/data-model/data-model';
+import { ActivatedRoute, Route } from '@angular/router';
 @Component({
   selector: 'app-create-feedback',
   templateUrl: './create-feedback.component.html',
@@ -18,8 +19,7 @@ export class CreateFeedbackComponent implements OnInit {
   newCategory!: Category;
   newDescription!: string;
   feedbacks!: FeedbackRequest[];
-
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService,private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.createFeedbackForm = new FormGroup({
@@ -40,7 +40,7 @@ export class CreateFeedbackComponent implements OnInit {
     this.newDescription = this.createFeedbackForm.controls['newDescription'].value;
 
     const newFeedback: FeedbackRequest = {
-      id: 1,
+      id: this.feedbacks.length + 1,
       title: this.newTitle,
       description: this.newDescription,
       upvotes: 0,

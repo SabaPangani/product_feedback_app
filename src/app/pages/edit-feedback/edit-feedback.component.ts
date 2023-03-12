@@ -91,7 +91,7 @@ export class EditFeedbackComponent {
   deleteFeedback() {
     this._dataService.deleteFeedback(this.feedbackId).subscribe(
       (response: FeedbackRequest) => {
-        console.log('Feedback added successfully:', response);
+        console.log('Feedback edited successfully:', response);
       },
       (error: any) => {
         console.error('Failed to add feedback:', error);

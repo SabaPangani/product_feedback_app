@@ -57,9 +57,9 @@
         </div>
     </div>
 </aside>
-<div class="bg" [ngClass]="{'active': openNav}" *ngIf="openNav"></div>
+<div class="bg"*ngIf="openNav" [@fadeInOut]="openNav ? 'enter' : 'leave'"></div>
 
-<div class="mobile-board" [ngClass]="{'active': openNav}" *ngIf="openNav">
+<div class="mobile-board" [@slideInOut]="openNav ? 'enter' : 'leave'"  *ngIf="openNav">
     <div class="container">
         <div class="filters padding-m">
             <li (click)="filterByCategory('All'); onFilterClick(0)" [ngClass]="{'active': activeIndex === 0}">All
