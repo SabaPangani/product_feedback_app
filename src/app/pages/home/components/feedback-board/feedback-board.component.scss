@@ -1,29 +1,33 @@
-aside{
+aside {
     @media only screen and (max-width:586px) {
         padding: 0;
     }
+
     .container {
         width: 100%;
         max-width: 280px;
         margin-right: 0 !important;
+
         @media only screen and (max-width:904px) {
             max-width: 100%;
             padding: 0 2em;
         }
-        
+
         @media only screen and (max-width:586px) {
             padding: 0;
         }
+
         .wrapper {
             display: flex;
             flex-direction: column;
             row-gap: 30px;
             column-gap: 20px;
+
             @media only screen and (max-width:904px) {
                 flex-direction: row;
                 align-items: center;
             }
-            
+
             .header {
                 display: flex;
                 justify-content: flex-end;
@@ -43,33 +47,39 @@ aside{
                     align-items: center;
                     height: 90px;
                 }
+
                 p {
                     font-size: 15px;
                     opacity: .8;
                     font-weight: 500 !important;
                 }
+
                 @media only screen and (max-width:904px) {
                     height: 170px;
                 }
 
                 @media only screen and (max-width:586px) {
                     height: 117px;
+                    padding: 0 1.5em;
                 }
-                .list{
+
+                .list {
                     display: none;
+
                     @media only screen and (max-width:586px) {
                         display: block;
                     }
                 }
 
-                figure{
+                figure {
                     display: none;
+
                     @media only screen and (max-width:586px) {
                         display: block;
                     }
                 }
             }
-    
+
             .filters {
                 width: 100%;
                 display: flex;
@@ -78,6 +88,7 @@ aside{
                 gap: 20px 20px;
                 background-color: white;
                 border-radius: 10px;
+
                 @media only screen and (max-width:586px) {
                     display: none;
                 }
@@ -87,6 +98,7 @@ aside{
 
                     gap: 5px 20px;
                 }
+
                 li {
                     background-color: var(--light-gray);
                     padding: .5em 1em;
@@ -97,38 +109,43 @@ aside{
                     font-weight: 700;
                     cursor: pointer;
                     height: fit-content;
+
                     &:hover {
                         background-color: #CFD7FF;
                     }
                 }
-    
+
                 li.active {
                     color: white;
                     background-color: var(--dark-blue);
                 }
             }
-    
+
             .roadmap {
                 background-color: white;
                 border-radius: 10px;
+
                 @media only screen and (max-width:904px) {
                     height: 170px;
                 }
+
                 @media only screen and (max-width:904px) {
                     width: 100%;
                 }
+
                 @media only screen and (max-width:586px) {
                     display: none;
                 }
+
                 .roadmap-header {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-    
+
                     h3 {
                         color: var(--dark-graysh-blue);
                     }
-    
+
                     span {
                         color: var(--dark-blue);
                         font-weight: 600;
@@ -136,27 +153,28 @@ aside{
                         cursor: pointer;
                     }
                 }
-    
+
                 ul {
                     margin-top: 20px;
+
                     li {
                         margin-top: 10px;
                         display: flex;
                         align-items: center;
                         column-gap: 15px;
-    
+
                         span {
                             color: var(--light-graysh-blue);
-    
+
                             &:nth-child(2) {
                                 flex: 1;
                             }
-    
+
                             &:last-child {
                                 font-weight: 700;
                             }
                         }
-    
+
                         .circle {
                             display: inline-block;
                             width: 8px;
@@ -164,11 +182,11 @@ aside{
                             background-color: var(--orange);
                             border-radius: 100%;
                         }
-    
+
                         .circle-2 {
                             background-color: var(--purple);
                         }
-    
+
                         .circle-3 {
                             background-color: var(--sky-blue);
                         }
@@ -179,27 +197,27 @@ aside{
     }
 }
 
-.bg{
+.bg {
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.274);
-    z-index: 10;
+    z-index: -1;
     position: absolute;
     transition: .3s;
 }
-.mobile-board{
+
+.mobile-board {
     width: 80%;
     height: 100vh;
-    position: absolute;
-    right: 0;
     z-index: 1000;
     background-color: var(--very-light-gray);
     padding: 2em;
-    transition: .3s;
-    .container{
+
+    .container {
         display: flex;
         flex-direction: column;
         row-gap: 20px;
+
         .filters {
             width: 100%;
             display: flex;
@@ -208,6 +226,7 @@ aside{
             gap: 20px 20px;
             background-color: white;
             border-radius: 10px;
+
             li {
                 background-color: var(--light-gray);
                 padding: .5em 1em;
@@ -218,6 +237,7 @@ aside{
                 font-weight: 700;
                 cursor: pointer;
                 height: fit-content;
+
                 &:hover {
                     background-color: #CFD7FF;
                 }
@@ -232,6 +252,7 @@ aside{
         .roadmap {
             background-color: white;
             border-radius: 10px;
+
             .roadmap-header {
                 display: flex;
                 align-items: center;
@@ -251,6 +272,7 @@ aside{
 
             ul {
                 margin-top: 20px;
+
                 li {
                     margin-top: 10px;
                     display: flex;
@@ -289,3 +311,4 @@ aside{
         }
     }
 }
+

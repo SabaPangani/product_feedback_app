@@ -46,7 +46,12 @@ export class FeedbackBoardComponent implements OnInit {
   constructor(private _status: StatusService,private breakpointObserver: BreakpointObserver) { }
 
   toggleNav(){
-    this.openNav = !this.openNav
+    this.openNav = !this.openNav;
+    if (this.openNav) {
+      document.body.classList.add('sidenav-open');
+    } else {
+      document.body.classList.remove('sidenav-open');
+    }
   }
 
   @HostListener('window:resize', ['$event'])

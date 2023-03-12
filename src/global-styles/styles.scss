@@ -12,27 +12,19 @@
     list-style: none;
     font-family: 'Jost', sans-serif;
 }
-
 html,
 body {
     height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: var(--very-light-gray);
+
+    .sidenav-open {
+        overflow: hidden !important;
+    }
 }
+
+
 
 .padding-m {
     padding: 1em;
