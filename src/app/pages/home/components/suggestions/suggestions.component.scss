@@ -45,8 +45,7 @@
 
         .sort {
             flex: 1;
-            opacity: .8;
-
+            color: white;
             @media only screen and (max-width:582px) {
                 display: flex;
                 flex-direction: column;
@@ -55,12 +54,19 @@
 
             label {
                 width: fit-content;
+
+                span{
+                    color: white;
+                    opacity: .8;
+                }
             }
 
             select {
                 background: none;
                 border: none;
                 color: #FFFFFF;
+                font-size: .9rem;
+                font-weight: 700;
                 padding: .5em;
                 cursor: pointer;
 
